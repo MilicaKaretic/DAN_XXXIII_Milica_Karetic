@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -40,7 +41,28 @@ namespace DAN_XXXIII_Milica_Karetic
         /// </summary>
         public static void WriteMatrixToFile()
         {
-
+            string fileName = @"..\..\FileByThread_1.txt";
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(fileName))
+                {
+                    for (int i = 0; i < 100; i++)
+                    {
+                        for (int j = 0; j < 100; j++)
+                        {
+                            if (i == j)
+                                sw.Write("1");
+                            else
+                                sw.Write("0");
+                        }
+                        sw.WriteLine();
+                    }
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         /// <summary>
         /// Method that write random odd numbers 0-10000 to file
