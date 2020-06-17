@@ -101,6 +101,22 @@ namespace DAN_XXXIII_Milica_Karetic
         /// </summary>
         public static void GetMatrixFromFile()
         {
+            string fileName = @"..\..\FileByThread_1.txt";
+            try
+            {
+                using (StreamReader sw = new StreamReader(fileName))
+                {
+                    string line;
+                    while ((line = sw.ReadLine()) != null)
+                    {
+                        Console.WriteLine(line);
+                    }
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
