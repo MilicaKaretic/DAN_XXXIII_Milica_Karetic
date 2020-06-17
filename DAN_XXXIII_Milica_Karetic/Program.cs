@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace DAN_XXXIII_Milica_Karetic
 {
@@ -173,10 +171,23 @@ namespace DAN_XXXIII_Milica_Karetic
             }
 
 
+            Stopwatch s = new Stopwatch();
+            //start stopwatch 
+            s.Start();
             threads[0].Start();
             threads[1].Start();
             threads[0].Join();
             threads[1].Join();
+            //end stopwatch after two threads finished their job
+            s.Stop();
+
+            Console.WriteLine();
+            TimeSpan ts = s.Elapsed;
+
+            // Format and display the TimeSpan value.
+            string elapsedTime = String.Format("{0:00}:{1:00}", ts.Seconds, ts.Milliseconds);
+            //write time to console
+            Console.WriteLine("RunTime for thread_1 and thread_22 " + elapsedTime);
 
 
             threads[2].Start();
