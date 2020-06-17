@@ -69,6 +69,31 @@ namespace DAN_XXXIII_Milica_Karetic
         /// </summary>
         public static void WriteRandomNumbersToFile()
         {
+            string fileName = @"..\..\FileByThread_22.txt";
+            Random rnd = new Random();
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(fileName))
+                {
+                    int i = 0;
+                    while (i < 1000)
+                    {
+                        int num = rnd.Next(0, 10000);
+                        if (num % 2 != 0)
+                        {
+                            sw.WriteLine(num);
+                            i++;
+                        }
+                        else
+                            continue;
+                    }
+
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         /// <summary>
