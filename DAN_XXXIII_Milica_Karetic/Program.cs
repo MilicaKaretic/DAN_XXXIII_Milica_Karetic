@@ -124,6 +124,26 @@ namespace DAN_XXXIII_Milica_Karetic
         /// </summary>
         public static void GetSumFromFile()
         {
+            string fileName = @"..\..\FileByThread_22.txt";
+            Random rnd = new Random();
+            try
+            {
+                int sum = 0;
+                using (StreamReader sw = new StreamReader(fileName))
+                {
+                    string line;
+                    while ((line = sw.ReadLine()) != null)
+                    {
+                        sum = sum + int.Parse(line);
+                    }
+
+                }
+                Console.WriteLine("Sum of odd numbers from file: " + sum);
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         static void Main(string[] args)
